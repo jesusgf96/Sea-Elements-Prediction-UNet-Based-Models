@@ -11,9 +11,6 @@ The required modules can be installed  via:
     pip install -r requirements.txt
 
 
-Quick Start
-~~~~~~~~~~~
-
 
 Models
 -----
