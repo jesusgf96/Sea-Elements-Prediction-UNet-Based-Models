@@ -19,7 +19,7 @@ Scripts
 Models
 -----
 
-.. figure:: figures/3DDR-UNet_architecture.pdf
+.. figure:: figures/3DDR-UNet_architecture.png
 
 
 Results
