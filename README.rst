@@ -1,16 +1,7 @@
 Coastal sea elements prediction with UNet based models
 ========
 
-
-
-
-📊 Results
------
-
-(We could add a table with results and a nice gifs)
-
-
-💻 Installation
+Installation
 -----
 
 The required modules can be installed  via:
@@ -24,8 +15,21 @@ Quick Start
 ~~~~~~~~~~~
 
 
+Models
+-----
+
+(We could show the images of the architectures)
+
+
+Results
+-----
+
+(We could add a table with results and a nice gifs)
+
+
+
   
-📂 Data
+Data
 -----
 
 In order to download the data, please email to one of the following addresses:
@@ -35,11 +39,11 @@ In order to download the data, please email to one of the following addresses:
 The data must be downloaded and unzipped inside the 'Data/' directory.
 
 
-📜 Scripts
+Scripts
 -----
 
 
-🔗 Citation
+Citation
 -----
 
 If you decide to cite our project in your paper or use our data, please use the following bibtex reference:
