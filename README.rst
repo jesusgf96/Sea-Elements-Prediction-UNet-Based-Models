@@ -19,13 +19,13 @@ Scripts
 Models
 -----
 
-.. figure:: figures/3DDR-UNet_architecture.png
+(We could add the images of the architectures)
 
 
 Results
 -----
 
-(We could add a table with results and a nice gif)
+(We could add a table with results and a gif or images)
 
 
   
