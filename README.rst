@@ -11,6 +11,10 @@ The required modules can be installed  via:
     pip install -r requirements.txt
 
 
+Scripts
+-----
+
+
 
 Models
 -----
@@ -24,7 +28,6 @@ Results
 (We could add a table with results and a nice gif)
 
 
-
   
 Data
 -----
@@ -34,10 +37,6 @@ In order to download the data, please email to one of the following addresses:
 <Addresses>
 
 The data must be downloaded and unzipped inside the 'Data/' directory.
-
-
-Scripts
------
 
 
 Citation
