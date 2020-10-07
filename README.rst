@@ -21,7 +21,7 @@ Models
 Results
 -----
 
-(We could add a table with results and a nice gifs)
+(We could add a table with results and a nice gif)
 
 
 
