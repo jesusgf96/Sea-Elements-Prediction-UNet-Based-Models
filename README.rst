@@ -1,6 +1,5 @@
-# Coastal sea elements prediction with UNet based models
-
-
+Coastal sea elements prediction with UNet based models
+========
 
 
 
@@ -8,9 +7,7 @@
 📊 Results
 -----
 
-The best results for cross-subject testing of models that are trained with 12 subjects and tested on 6 subjects are shown below. 
-
-.. figure:: results.svg
+(We could add a table with results and a nice gifs)
 
 
 💻 Installation
