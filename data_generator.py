@@ -8,13 +8,14 @@ import tensorflow as tf
 # -ts_train is a int to pick from 0 to maxTimeStep
 # -ts_val=[] and ts_test=[] are list with the shape: (season, range_timeSteps) -> [[-,-],[-,-],[-,-],[-,-]] 
 class DataGenerator(tf.keras.utils.Sequence):
-    def __init__(self, data, batch_size, lags, ts_ahead, purpose, ts_train=0, ts_val=[], ts_test=[], debug=False):
+    def __init__(self, data, batch_size, lags, ts_ahead, purpose, ts_train=0, ts_val=[], ts_test=[], debug=False, sep_seasons=False):
         self.data = data
         self.b_size = batch_size
         self.lags = lags
         self.ts_ahead = ts_ahead
         self.purpose = purpose #'train', 'val' or 'test'
-        self.debug=debug #Show msgs with indexes used in each moment (just to check correct functioning)
+        self.debug = debug #Show msgs with indexes used in each moment (just to check correct functioning)
+        self.sep_seasons = sep_seasons
         #Training data
         if self.purpose=='train': 
             self.tempVar1 = data[0].variables['uo'][:ts_train,0,:,:] 
@@ -69,8 +70,11 @@ class DataGenerator(tf.keras.utils.Sequence):
         else:
             x = []
             y = []
+            #Individual seasons or all of them together
+            if self.sep_seasons: n=1
+            else: n=4
             #Iterating different seasons
-            for season in range(4):
+            for season in range(n):
                 tempVar1 = self.tempVar1[season]
                 tempVar2 = self.tempVar2[season]
                 tempVar3 = self.tempVar3[season]
