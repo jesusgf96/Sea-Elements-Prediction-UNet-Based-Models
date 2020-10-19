@@ -1,11 +1,28 @@
-🌊Coastal sea elements prediction with UNet based models
+🌊Coastal sea elements prediction with U-Net based models
 ========
 
 Official code from the paper that you can find in the following link:
 
 📊 Results
 -----
-Some plots of the actual vs prediction of the AsymmInceptionRes-3DDR-UNet model.
+
+Some animation of the actual vs prediction of the AsymmInceptionRes-3DDR-UNet model:
+
++-----------------------------+----------+------------+
+|       Variable              | Actual   | Prediction |
++=============================+==========+============+
+| Sea Surface Height          |          |            |
++-----------------------------+----------+------------+
+| Sea Water Salinity          |          |            |
++-----------------------------+----------+------------+
+| Eastward Current Velocity   |          |            |
++-----------------------------+----------+------------+
+| Northward Current Velocity  |          |            |
++-----------------------------+----------+------------+
+
+
+
+💻 Installation
 -----
 
 The required modules can be installed  via:
@@ -13,7 +30,14 @@ The required modules can be installed  via:
 .. code:: bash
 
     pip install -r requirements.txt
+    
+Quick Start
+~~~~~~~~~~~
+To launch the training, please run:
 
+.. code:: bash
+
+    python train_selected_model.py 
 
 📜 Scripts
 -----
@@ -23,12 +47,11 @@ The required modules can be installed  via:
 🔍 Models
 -----
 
-We show here the schemas related to the 3DDR-UNet and AsymmInceptionRes-3DDR-UNet models.
+We show here the schema related to the AsymmInceptionRes-3DDR-UNet model.
 
-
-
+.. figure:: figures/AsymmInceptionRes-3DDR-UNet.png
   
-Data
+📂 Data
 -----
 
 In order to download the data, please email to one of the following addresses:
@@ -37,10 +60,12 @@ siamak.mehrkanoon@maastrichtuniversity.nl
 
 j.garciafernandez@student.maastrichtuniversity.nl
 
+i.alaouiabdellaoui@student.maastrichtuniversity.nl
+
 The data must be downloaded and unzipped inside the 'Data/' directory.
 
 
-Citation
+🔗 Citation
 -----
 
 If you decide to cite our project in your paper or use our data, please use the following bibtex reference:
