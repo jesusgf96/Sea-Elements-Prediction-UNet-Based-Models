@@ -6,7 +6,7 @@ from tensorflow.keras.layers import Conv3D, MaxPool3D, UpSampling3D
 
 
 # The data has 3-dimensional shape in the encoder and 2-dimensional shape in the decoder
-def UNet_3DDR(lags, latitude, longitude, features, features_output, filters, dropout, kernel_init='glorot_uniform'):
+def UNet_3DDR(lags, latitude, longitude, features, features_output, filters, dropout, kernel_init=tf.keras.initializers.GlorotUniform(seed=50)):
     
     #--- Contracting part / encoder ---#
     inputs = Input(shape = (lags, latitude, longitude, features)) 
@@ -66,7 +66,7 @@ def UNet_3DDR(lags, latitude, longitude, features, features_output, filters, dro
     
 
 # Includes residual connections and more consecutive convolutional operations
-def UNet_Res3DDR(lags, latitude, longitude, features, features_output, filters, dropout, kernel_init='glorot_uniform'):
+def UNet_Res3DDR(lags, latitude, longitude, features, features_output, filters, dropout, kernel_init=tf.keras.initializers.GlorotUniform(seed=50)):
     
     def residual_block(x, f, k):
         shortcut=x
@@ -140,7 +140,7 @@ def UNet_Res3DDR(lags, latitude, longitude, features, features_output, filters, 
 
 
 # Includes parallel convolutions and residual connections
-def UNet_InceptionRes3DDR(lags, latitude, longitude, features, features_output, filters, dropout, kernel_init='glorot_uniform'):
+def UNet_InceptionRes3DDR(lags, latitude, longitude, features, features_output, filters, dropout, kernel_init=tf.keras.initializers.GlorotUniform(seed=50)):
        
     def res_inception_block(x, f, k):
         shortcut=x
@@ -214,7 +214,7 @@ def UNet_InceptionRes3DDR(lags, latitude, longitude, features, features_output, 
 
 
 # Includes parallel convolutions, asymmetric convolutions and residual connections
-def UNet_UNet_InceptionRes3DDR(lags, latitude, longitude, features, features_output, filters, dropout, kernel_init=tf.keras.initializers.GlorotUniform(seed=50)):    
+def UNet_AsymmetricInceptionRes3DDR(lags, latitude, longitude, features, features_output, filters, dropout, kernel_init=tf.keras.initializers.GlorotUniform(seed=50)):    
 
     def res_inception_block(x, f, k):
         shortcut=x

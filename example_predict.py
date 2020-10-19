@@ -25,19 +25,23 @@ try:
 	data.append(nc('Data/SAL.nc'))
 	data.append(nc('Data/SSH.nc'))
 except:
-	print("\nData not found. Please decompress the data inside '/Data/'")
-	sys.exit()
-
-
-#Loading best model
-filepath="saved_models/best_model.hdf5"
-model = load_model(filepath)
+    print("\nData not found. Please decompress the data inside '/Data/' in the same directory where the scripts are")
+    sys.exit()
 
 
 # Extracting max and min values of each variable from training data
 ts_train = 8760
 maxValues, minValues = get_min_max_values_data(data, ts_train)
 
+#Loading best model
+filepath="saved_models/best_model.hdf5"
+model = load_model(filepath, compile=False)
+
+#Compiling with denormalizing metrics
+mse_denorm = MSE_denormalized(maxValues, minValues)
+optimizer = 'Adam'
+model.compile(loss=[mse_denorm.mse1, mse_denorm.mse2, mse_denorm.mse3, mse_denorm.mse4], optimizer=optimizer, 
+    metrics=[mse_denorm.mse1, mse_denorm.mse2, mse_denorm.mse3, mse_denorm.mse4])
 
 #Uncomment to use samples in summer
 t_steps_ini = 12215
@@ -52,7 +56,6 @@ tempVar1 = data[0].variables['uo'][t_steps_ini:t_steps_fin,0,:,:]
 tempVar2 = data[1].variables['vo'][t_steps_ini:t_steps_fin,0,:,:] 
 tempVar3 = data[2].variables['so'][t_steps_ini:t_steps_fin,0,:,:] 
 tempVar4 = data[3].variables['zos'][t_steps_ini:t_steps_fin,:,:]
-
 
 #Normalization & replace masked values
 wind = normalize(tempVar1)

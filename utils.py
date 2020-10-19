@@ -1,6 +1,7 @@
 import numpy as np
 import tensorflow as tf
 
+
 #Receives a list of target features and label features
 # and returns the X & Y.
 #It also crops the image to 128,128
@@ -50,7 +51,7 @@ def get_min_max_values_data(data, n):
 	maxValues.append(np.max(data[2].variables['so'][:n,0,:,:]))
 	maxValues.append(np.max(data[3].variables['zos'][:n,:,:]))
 
-	# Extracting the maximum values from the data
+	# Extracting the minimum values from the data
 	minValues = []
 	minValues.append(np.min(data[0].variables['uo'][:n,0,:,:]))
 	minValues.append(np.min(data[1].variables['vo'][:n,0,:,:]))
@@ -66,8 +67,29 @@ class MSE_denormalized:
 		self.maxValues = maxValues
 		self.minValues = minValues
 		self.mse = tf.keras.losses.MeanSquaredError()
+	
+	# All variables
+	def mse_all(self, y_true, y_pred):
+		# Denormalizing ground truth
+		y_true1 = denormalize(y_true[:,:,:,:,0], self.maxValues[0], self.minValues[0])
+		y_true2 = denormalize(y_true[:,:,:,:,1], self.maxValues[1], self.minValues[1])
+		y_true3 = denormalize(y_true[:,:,:,:,2], self.maxValues[2], self.minValues[2])
+		y_true4 = denormalize(y_true[:,:,:,:,3], self.maxValues[3], self.minValues[3])
+		# Denormalizing prediction
+		y_pred1 = denormalize(y_pred[:,:,:,:,0], self.maxValues[0], self.minValues[0])
+		y_pred2 = denormalize(y_pred[:,:,:,:,1], self.maxValues[1], self.minValues[1])
+		y_pred3 = denormalize(y_pred[:,:,:,:,2], self.maxValues[2], self.minValues[2])
+		y_pred4 = denormalize(y_pred[:,:,:,:,3], self.maxValues[3], self.minValues[3])
+		# Calculating mse per variable
+		mse1 = self.mse(y_true1, y_pred1)
+		mse2 = self.mse(y_true2, y_pred2)
+		mse3 = self.mse(y_true3, y_pred3)
+		mse4 = self.mse(y_true4, y_pred4)
+		# Returning mean of all the variables
+		stacked_mse = tf.stack([mse1, mse2, mse3, mse4])
+		return tf.keras.backend.mean(stacked_mse)
 
-	#  Eastward wind
+	# Eastward wind
 	def mse1(self, y_true, y_pred):
 		y_pred = denormalize(y_pred[:,:,:,:,0], self.maxValues[0], self.minValues[0])
 		y_true = denormalize(y_true[:,:,:,:,0], self.maxValues[0], self.minValues[0])

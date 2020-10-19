@@ -25,8 +25,8 @@ try:
 	data.append(nc('Data/SAL.nc'))
 	data.append(nc('Data/SSH.nc'))
 except:
-	print("\nData not found. Please decompress the data inside '/Data/'")
-	sys.exit()
+    print("\nData not found. Please decompress the data inside '/Data/' in the same directory where the scripts are")
+    sys.exit()
 
 
 ########### TRAINING ###########
@@ -43,20 +43,29 @@ lat = 128
 long = 128
 feats = 4
 feats_output = 4
-convFilters = 16
+convFilters = 15
 dropoutRate = 0.5
-loss = 'mse'
 optimizer = 'Adam'
 
 #Parameters training
 epochs = 1
-batch_size = 8
-ts_ahead = 1
+batch_size = 16
+ts_ahead = 72
 batch_size_added = batch_size + lags + ts_ahead - 1
+
+#Timesteps
+ts_train = 8760
+ts_val = [[9503,10007],[11687,12191],[13895,14399],[16104,16608]]
+
+#Extracting the maximum and minimum values from the training data
+maxValues, minValues = get_min_max_values_data(data, ts_train)
+
+#Custom metrics (denormalized mse)
+mse_denorm = MSE_denormalized(maxValues, minValues)
 
 #Instantiation model
 model = network(lags, lat, long, feats, feats_output, convFilters, dropoutRate)
-model.compile(loss=loss, optimizer=optimizer, metrics=['MeanSquaredError'])
+model.compile(loss=mse_denorm.mse_all, optimizer=optimizer, metrics=[mse_denorm.mse_all])
 model.summary()
 
 #Checkpoint to save best model
@@ -65,8 +74,6 @@ checkpoint = ModelCheckpoint(filepath, monitor='val_loss', verbose=1, save_best_
 callbacks_list = [checkpoint]
 
 #Instantiating generators
-ts_train = 8760
-ts_val = [[9503,10007],[11687,12191],[13895,14399],[16104,16608]]
 training_generator = DataGenerator(data, batch_size_added, lags, ts_ahead, 'train', ts_train=ts_train)
 validation_generator = DataGenerator(data, batch_size_added, lags, ts_ahead, 'val', ts_val=ts_val)
 
@@ -95,11 +102,8 @@ plt.show()
 
 print("\nEvaluating model...")
 
-# Extracting max and min values of each variable from training data
-maxValues, minValues = get_min_max_values_data(data, ts_train)
-
 #Loading best model
-model = load_model(filepath)
+model = load_model(filepath, compile=False)
 
 #Compiling with denormalizing metrics
 mse_denorm = MSE_denormalized(maxValues, minValues)
