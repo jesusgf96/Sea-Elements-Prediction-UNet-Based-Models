@@ -20,6 +20,7 @@ Some animation of the actual vs prediction of the AsymmInceptionRes-3DDR-UNet mo
 | Northward Current Velocity  |.. figure:: figures/actual-CUR-vo.gif   |.. figure:: figures/prediction-CUR-vo.gif   |                                                             
 +-----------------------------+----------------------------------------+--------------------------------------------+
 
+Note: the dark area is made of pixels that correspond to the land.
 
 
 💻 Installation
