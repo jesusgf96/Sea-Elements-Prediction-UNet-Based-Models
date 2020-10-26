@@ -6,20 +6,21 @@ Official code from the paper that you can find in the following link:
 📊 Results
 -----
 
-Some animation of the actual vs prediction of the AsymmInceptionRes-3DDR-UNet model:
+Some animation of the actual vs prediction of the AsymmInceptionRes-3DDR-UNet model, using a 48h ahead prediction:
 
-+-----------------------------+----------+------------+
-|       Variable              | Actual   | Prediction |
-+=============================+==========+============+
-| Sea Surface Height          |          |            |
-+-----------------------------+----------+------------+
-| Sea Water Salinity          |          |            |
-+-----------------------------+----------+------------+
-| Eastward Current Velocity   |          |            |
-+-----------------------------+----------+------------+
-| Northward Current Velocity  |          |            |
-+-----------------------------+----------+------------+
++-----------------------------+----------------------------------------+--------------------------------------------+
+|       Variable              | Actual                                 | Prediction                                 |
++=============================+========================================+============================================+
+| Sea Surface Height          |.. figure:: figures/actual-SSH.gif      |.. figure:: figures/prediction-SSH.gif      |                                                             
++-----------------------------+----------------------------------------+--------------------------------------------+
+| Sea Water Salinity          |.. figure:: figures/actual-SAL.gif      |.. figure:: figures/prediction-SAL.gif      |                      
++-----------------------------+----------------------------------------+--------------------------------------------+
+| Eastward Current Velocity   |.. figure:: figures/actual-CUR-uo.gif   |.. figure:: figures/prediction-CUR-uo.gif   |
++-----------------------------+----------------------------------------+--------------------------------------------+
+| Northward Current Velocity  |.. figure:: figures/actual-CUR-vo.gif   |.. figure:: figures/prediction-CUR-vo.gif   |                                                             
++-----------------------------+----------------------------------------+--------------------------------------------+
 
+Note: the dark area is made of pixels that correspond to the land.
 
 
 💻 Installation
