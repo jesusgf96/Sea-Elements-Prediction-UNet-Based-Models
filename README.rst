@@ -1,4 +1,4 @@
-🌊Coastal sea elements prediction with U-Net based models
+🌊Coastal sea elements forecasting using U-Net based models
 ========
 
 Official code from the paper that you can find in the following link:
