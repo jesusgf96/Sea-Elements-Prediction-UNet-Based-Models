@@ -57,9 +57,9 @@ We show here the schema related to the AsymmInceptionRes-3DDR-UNet model.
 
 In order to download the data, please email to one of the following addresses:
 
-siamak.mehrkanoon@maastrichtuniversity.nl
-
 j.garciafernandez@student.maastrichtuniversity.nl
+
+siamak.mehrkanoon@maastrichtuniversity.nl
 
 i.alaouiabdellaoui@student.maastrichtuniversity.nl
 
