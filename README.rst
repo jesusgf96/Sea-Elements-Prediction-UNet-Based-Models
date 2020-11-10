@@ -69,7 +69,7 @@ The data must be downloaded and unzipped inside the 'Data/' directory.
 🔗 Citation
 -----
 
-If you decide to cite our project in your paper or use our data, please use the following bibtex reference:
+If you use our data and code, please cite the paper using the following bibtex reference:
 
 .. code:: bibtex
 
