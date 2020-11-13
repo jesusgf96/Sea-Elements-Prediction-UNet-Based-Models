@@ -76,6 +76,6 @@ If you use our data and code, please cite the paper using the following bibtex r
     @article{Fernández2020coastal,
         title={Coastal sea elements prediction using U-Net based models},
         author={García Fernández, Jesús and Alaoui Abdellaoui, Ismail and Mehrkanoon, Siamak},
-        journal={arXiv preprint arXiv:},
+        journal={arXiv preprint arXiv:2011.03303},
         year={2020}
     }
