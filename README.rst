@@ -1,7 +1,7 @@
 🌊 Deep coastal sea elements forecasting using U-Net based models
 ========
 
-Official code from the paper that you can find in the following link: https://arxiv.org/pdf/2011.03303.pdf
+The official code of the following paper : https://arxiv.org/pdf/2011.03303.pdf
 
 📊 Results
 -----
