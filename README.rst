@@ -55,7 +55,7 @@ We show here the schema related to the AsymmInceptionRes-3DDR-UNet model.
 📂 Data
 -----
 
-In order to download the data, please email to the following addresses:
+In order to download the data or any of the trained models, please email to the following addresses:
 
 j.garciafernandez@student.maastrichtuniversity.nl
 
