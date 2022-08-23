@@ -68,10 +68,12 @@ The data must be downloaded and unzipped inside the 'Data/' directory.
 If you use our data and code, please cite the paper using the following bibtex reference:
 
 .. code:: bibtex
-
-    @article{fernandez2020deep,
-      title={Deep coastal sea elements forecasting using U-Net based models},
+ 
+    @article{fernandez2022deep,
+      title={Deep coastal sea elements forecasting using UNet-based models},
       author={Fern{\'a}ndez, Jes{\'u}s Garc{\'\i}a and Abdellaoui, Ismail Alaoui and Mehrkanoon, Siamak},
-      journal={arXiv preprint arXiv:2011.03303},
-      year={2020}
+      journal={Knowledge-Based Systems},
+      pages={109445},
+      year={2022},
+      publisher={Elsevier}
     }
